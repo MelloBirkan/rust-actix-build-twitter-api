@@ -182,6 +182,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "actix_extractors_app_data"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+]
+
+[[package]]
 name = "actix_overview"
 version = "0.1.0"
 dependencies = [
