@@ -1,5 +1,5 @@
 httpserver { // get, post, put, delete. statuscodes 400, 500.
     app_server {
-
+        99% da bussines logic vai aqui
     }
 }
