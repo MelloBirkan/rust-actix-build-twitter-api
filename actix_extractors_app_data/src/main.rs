@@ -6,20 +6,21 @@ struct Messenger {
     message: String
 }
 
-struct MutableState {
-    messenger: Mutex<Messenger>
+#[derive(Clone)]
+struct appState {
+    messenger: Messenger
 }
 
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let app_data = actix_web::web::Data::new(MutableState {
-        messenger: Mutex::new(Messenger { message: "Hello".to_string() })
-    });
+    let app_data = appState {
+        messenger: Messenger { message: "Oi".to_owned()}
+    };
 
     HttpServer::new(move || {
         App::new()
-            .app_data(app_data.clone())
+            .app_data(actix_web::web::Data::new(app_data.clone()))
             .route("/", actix_web::web::post().to(update))
             .route("/", actix_web::web::get().to(get))
     })
@@ -28,12 +29,11 @@ async fn main() -> std::io::Result<()> {
         .await
 }
 
-async fn update(app_data: actix_web::web::Data<MutableState>) -> String {
-    let mut messenger = app_data.messenger.lock().unwrap();
-    messenger.message = format!("{} world", messenger.message);
-    "".to_string()
+async fn update(app_data: actix_web::web::Data<appState>) -> String {
+    let messenger = app_data.messenger.clone();
+    format!("{} world", messenger.message)
 }
 
-async fn get(app_data: actix_web::web::Data<MutableState>) -> String {
-    app_data.messenger.lock().unwrap().message.clone()
+async fn get(app_data: actix_web::web::Data<appState>) -> String {
+    app_data.messenger.message.clone()
 }
