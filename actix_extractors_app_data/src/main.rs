@@ -1,4 +1,3 @@
-use std::sync::Mutex;
 use actix_web::{HttpServer, App};
 
 #[derive(Clone)]
@@ -7,14 +6,14 @@ struct Messenger {
 }
 
 #[derive(Clone)]
-struct appState {
+struct AppState {
     messenger: Messenger
 }
 
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let app_data = appState {
+    let app_data = AppState {
         messenger: Messenger { message: "Oi".to_owned()}
     };
 
@@ -29,11 +28,11 @@ async fn main() -> std::io::Result<()> {
         .await
 }
 
-async fn update(app_data: actix_web::web::Data<appState>) -> String {
+async fn update(app_data: actix_web::web::Data<AppState>) -> String {
     let messenger = app_data.messenger.clone();
     format!("{} world", messenger.message)
 }
 
-async fn get(app_data: actix_web::web::Data<appState>) -> String {
+async fn get(app_data: actix_web::web::Data<AppState>) -> String {
     app_data.messenger.message.clone()
 }

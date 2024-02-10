@@ -6,13 +6,13 @@ async fn main() -> std::io::Result<()> {
         actix_web::App::new()
             .service(
                 actix_web::web::scope("/v1") // Para criar sub-rotas
-                    .route("/hello", actix_web::web::get().to(index))
-                    .route("/hello", actix_web::web::post().to(insert))
+                    .route("/v1", actix_web::web::get().to(index))
+                    .route("/v1", actix_web::web::post().to(insert))
             )
             .service(
                 actix_web::web::scope("/v2") // Para criar sub-rotas
-                    .route("/2", actix_web::web::get().to(index))
-                    .route("/2", actix_web::web::post().to(insert))
+                    .route("/v2", actix_web::web::get().to(index))
+                    .route("/v2", actix_web::web::post().to(insert))
             )
     })
         .bind(("127.0.0.1", 8000))?
