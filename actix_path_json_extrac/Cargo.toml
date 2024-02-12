@@ -1,9 +1,11 @@
-workspace = { members = [ "actix_extractors_app_data","actix_overview", "actix_path_json_extrac"] }
 [package]
-name = "rust_actix_twitter_api"
+name = "actix_path_json_extrac"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+actix-web = "4.3.1"
+serde = { version = "1.0.157", features = ["derive"]}
+serde_json = "1.0.94"

@@ -196,6 +196,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "actix_path_json_extrac"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.21.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"

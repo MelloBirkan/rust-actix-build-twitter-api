@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/actix_extractors_app_data/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/actix_overview/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/actix_path_json_extrac/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/actix_extractors_app_data/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
